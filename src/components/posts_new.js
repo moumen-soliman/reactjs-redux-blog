@@ -7,7 +7,7 @@ class PostsNew extends Component {
 		const classNameErr = `form-group ${touched && error ? 'has-danger' : ''}`;
 
 		return (
-			<div className="form-group has-danger">
+			<div className={classNameErr}>
 				<label>{field.label}</label>
 				<input
 					className="form-control"
