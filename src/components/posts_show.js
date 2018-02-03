@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPost } from '../actions';
 
 class PostsShow extends Component {
+	componentDidMount() {
+		const { id } = this.props.match.params.id;
+		this.props.fetchPost();
+	}
+
 	render() {
 		return (
 			<div>
@@ -10,4 +17,8 @@ class PostsShow extends Component {
 	}
 }
 
-export default PostsShow;
+function mapStateToProps({ posts }, ownProps){
+	return { post: posts[ownProps.match.paramss.id] };
+}
+
+export default connect(mapStateToProps, { fetchPost })(PostsShow);
