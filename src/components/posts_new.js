@@ -11,14 +11,20 @@ class PostsNew extends Component {
 					type="text"
 					{...field.input}
 				/>
-				{field.meta.error} //meta.error property
+				{field.meta.error}
 			</div>
 		);
 	}
 
+	onSubmit(values) {
+		console.log(values);
+	}
+
 	render() {
+		const { handleSubmit } = this.props;
+
 		return (
-			<form>
+			<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 				<Field
 					label="Title"
 					name="title"
